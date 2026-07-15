@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sofía y los Tres Tesoros</title>
+
+<!-- Fuente Alegreya Medium -->
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background-color: #000;
+        font-family: "Alegreya", serif; /* ← Aplicada a TODA la página */
+        color: white;
+        user-select: none;
+        font-size: 20px; /* Tamaño de fuente aumentado */
+        line-height: 1.6;
+    }
+
+    /* Bloquear click derecho y selección */
+    body { -webkit-user-select: none; -webkit-touch-callout: none; }
+    html, body { user-select: none; }
+
+    header {
+        background: #6a0dad;
+        color: white;
+        padding: 25px;
+        text-align: center;
+        font-size: 36px; /* Más grande */
+        font-weight: 600;
+        font-family: "Alegreya", serif; /* Forzado a Alegreya */
+    }
+
+    .container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .box {
+        background: #2d004d;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        font-size: 22px; /* Más grande */
+        font-family: "Alegreya", serif;
+    }
+
+    .box h2 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-top: 0;
+    }
+
+    .btn {
+        background-color: #6a0dad;
+        padding: 16px 25px;
+        font-size: 22px; /* Más grande */
+        border: none;
+        border-radius: 12px;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+        font-family: "Alegreya", serif;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        background-color: #520a9c;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+        margin: 3% auto;
+        background: #1a1a1a;
+        padding: 20px;
+        width: 90%;
+        max-width: 850px;
+        border-radius: 12px;
+        font-family: "Alegreya", serif;
+    }
+
+    .page-img {
+        width: 100%;
+        border-radius: 10px;
+        pointer-events: none;
+        -webkit-user-drag: none;
+    }
+
+    /* Bloquear arrastrar, copiar y menú de imágenes */
+    img, video {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+</style>
+
+<script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    function abrirLibro() {
+        document.getElementById("modalLibro").style.display = "block";
+    }
+
+    function cerrarLibro() {
+        document.getElementById("modalLibro").style.display = "none";
+    }
+</script>
+
+</head>
+<body>
+
+<header>Sofía y los Tres Tesoros</header>
+
+<div class="container">
+
+    <!-- Portada -->
+    <img src="portada_1.jpg" alt="Portada del libro" class="page-img" style="margin-bottom:25px;">
+
+    <!-- Descripción -->
+    <div class="box">
+        <h2>Descripción</h2>
+        <p>
+            "Sofia y Los Tres Tesoros" es un viaje épico que narra la transformación de Sofía. Ella es una joven que ama profundamente a su familia y a su país, pero en las sombras se oculta una poderosa familia que desea destruir todo lo que ella ama. Para salvar a su familia y al mundo entero, Sofía deberá emprender una aventura legendaria llena de magia, peligro y valentía.
+        </p>
+    </div>
+
+    <!-- Introducción en video -->
+    <div class="box">
+        <h2>Introducción</h2>
+        <video src="video_0.mp4" controls style="width:100%; border-radius: 12px;" preload="metadata"></video>
+    </div>
+
+    <!-- Botón para comprar/descargar -->
+    <a href="https://www.amazon.com.mx/Sofia-y-Los-Tres-Tesoros-ebook/dp/B0FGYG5QPR/ref=sr_1_1?crid=3MH97R07X2G3X&dib=eyJ2IjoiMSJ9.Uv0BnRaijsmgYhPf_BAoGx5ILnR7bNKwmGgfzNIb8B3GjHj071QN20LucGBJIEps.alL7fNp8kf1IxINqa0m2C0QK7yVJi13G5XpY-lg29NU&dib_tag=se&keywords=sofia+y+los+tres+tesoros&qid=1764843090&sprefix=sofia+y+los+%2Caps%2C183&sr=8-1" target="_blank" class="btn">⬇ Comprar / Descargar</a>
+
+    <br><br>
+
+    <!-- Botón para abrir libro en ventana modal -->
+    <button class="btn" onclick="abrirLibro()">📖 Ver Libro</button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalLibro" class="modal">
+    <div class="modal-content">
+
+        <button class="btn" onclick="cerrarLibro()">Cerrar</button>
+        <br><br>
+
+        <!-- Páginas del libro -->
+        <img src="libro/pagina1.jpg" class="page-img">
+

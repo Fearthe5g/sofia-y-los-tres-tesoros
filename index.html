@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sofía y los Tres Tesoros</title>
+
+<!-- Fuente editorial -->
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ================= BASE / SEGURIDAD ================= */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: "Alegreya", serif;
+    font-size: 20px;
+    line-height: 1.6;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+img, video {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ================= NAVBAR ================= */
+
+/* ===== NAVBAR AJUSTADA ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 14px 40px;
+    background: #000;
+    border-bottom: 1px solid #222;
+}
+
+/* Bloque izquierdo: logo + nombre */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Logo más grande */
+.nav-logo-img {
+    height: 54px;   /* 👈 MÁS GRANDE */
+}
+
+/* Nombre del autor */
+.author-name {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+}
+
+/* Menú más centrado visualmente */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    margin: 0 auto;      /* 👈 CLAVE para centrar */
+    padding: 0;
+    font-size: 17px;
+}
+
+/* ===== HERO FADE SLIDER ===== */
+/* ===== HERO SLIDER DESLIZANTE LIMPIO ===== */
+.hero-slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;      /* 👈 CLAVE */
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    width: 300vw;          /* 3 slides = 300vw */
+    height: 100%;
+    animation: slideHero 18s infinite;
+}
+
+.slide {
+    width: 100vw;          /* 👈 UNA PANTALLA EXACTA */
+    height: 100%;
+    flex-shrink: 0;
+    background-size: contain;   /* NO RECORTA */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+}
+
+/* Animación real */
+@keyframes slideHero {
+    0%, 25% {
+        transform: translateX(0);
+    }
+    33%, 58% {
+        transform: translateX(-100vw);
+    }
+    66%, 100% {
+        transform: translateX(-200vw);
+    }
+}
+
+
+/* ================= CONTENIDO ================= */
+.container {
+    padding: 60px 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.box {
+    background: #2d004d;
+    padding: 30px;
+    border-radius: 14px;
+    margin-bottom: 40px;
+}
+
+.box h2 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+/* ================= BOTONES ================= */
+.btn {
+    display: inline-block;
+    background: #6a0dad;
+    color: #fff;
+    padding: 16px 26px;
+    font-size: 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-youtube{
+    background:#FF0000;
+}
+
+.btn-youtube:hover{
+    background:#d60000;
+}
+
+.btn:hover {
+    background: #520a9c;
+}
+
+/* ================= ARTE ================= */
+.arte-section {
+    padding: 80px 40px;
+}
+
+.arte-title {
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+.arte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.arte-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+/* ================= MODAL LIBRO ================= */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+}
+
+.modal-content {
+    margin: 3% auto;
+    background: #111;
+    padding: 20px;
+    max-width: 900px;
+    border-radius: 14px;
+}
+</style>
+
+<script>
+/* ===== CANDADOS ===== */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+function abrirLibro() {
+    document.getElementById("modalLibro").style.display = "block";
+}
+
+function cerrarLibro() {
+    document.getElementById("modalLibro").style.display = "none";
+}
+
+</script>
+
+<script>
+/* ===== HERO FADE LOGIC ===== */
+const slides = document.querySelectorAll(".hero-slider .slide");
+let current = 0;
+
+setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+}, 6000); // cambia cada 6 segundos
+</script>
+
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="logo.jpeg" class="nav-logo-img">
+        <span class="author-name">Rogelio Solorzano</span>
+    </div>
+
+    <ul class="nav-menu">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#libro">Libro</a></li>
+<li><a href="#arte">Arte</a></li>
+<li><a href="#bio">Biografía</a></li>
+<li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="lang-switch">
+        <span class="lang active">ES</span> / <span class="lang">EN</span>
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero-slider" id="inicio">
+    <div class="slider-track">
+        <div class="slide" style="background-image:url('arte_01_portada.jpeg')"></div>
+        <div class="slide" style="background-image:url('arte_02_portada.jpeg')"></div>
+        <div class="slide" style="background-image:url('arte_03_portada.jpeg')"></div>
+    </div>
+</section>
+
+<!-- ================= CONTENIDO ================= -->
+<div class="container" id="libro">
+
+    <div class="box">
+        <h2>Descripción</h2>
+        <p>
+            Sofía deberá emprender una aventura legendaria llena de magia,
+            peligro y valentía para salvar todo aquello que ama.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>Introducción</h2>
+        <video src="video_0.mp4" controls style="width:100%; border-radius:12px;"></video>
+    </div>
+
+    <a href="https://www.amazon.com.mx/Sofia-y-Los-Tres-Tesoros-ebook/dp/B0FGYG5QPR/"
+       target="_blank" class="btn">
+       ⬇ Comprar / Descargar
+    </a>
+
+    <br><br>
+
+    <button class="btn" onclick="abrirLibro()">📖 Ver Libro</button>
+
+    <br><br>
+
+<a href="https://youtube.com/@rogeliosolorzano-m9u"
+   target="_blank"
+   class="btn btn-youtube">
+   ▶ Mi Canal de YouTube
+</a>
+</div>
+
+<!-- ================= ARTE ================= -->
+<section class="arte-section" id="arte">
+    <h2 class="arte-title">Arte</h2>
+
+    <div class="arte-grid">
+        <img src="arte/arte_01_portada.jpeg">
+        <img src="arte/arte_02_portada.jpeg">
+        <img src="arte/arte_03_portada.jpeg">
+    </div>
+</section>
+
+<!-- ================= MODAL ================= -->
+<div id="modalLibro" class="modal">
+    <div class="modal-content">
+        <button class="btn" onclick="cerrarLibro()">Cerrar</button><br><br>
+        <img src="libro/pagina1.jpg" style="width:100%; border-radius:12px;">
+    </div>
+</div>
+
+</body>
+</html>
+
