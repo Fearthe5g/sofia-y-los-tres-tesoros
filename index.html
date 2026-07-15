@@ -15,6 +15,7 @@
 }
 
 html, body {
+    scroll-behavior: smooth;
     margin: 0;
     background: #000;
     color: #fff;
@@ -26,16 +27,26 @@ html, body {
     -webkit-touch-callout: none;
 }
 
-img, video {
+img {
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+video {
+    pointer-events: auto;
+    user-select: none;
 }
 
 /* ================= NAVBAR ================= */
 
 /* ===== NAVBAR AJUSTADA ===== */
 .navbar {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
     display: flex;
     align-items: center;
     padding: 14px 40px;
@@ -72,9 +83,20 @@ img, video {
     font-size: 17px;
 }
 
+
+.nav-menu a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+.nav-menu a:hover{
+    color:#d59cff;
+}
+
 /* ===== HERO FADE SLIDER ===== */
 /* ===== HERO SLIDER DESLIZANTE LIMPIO ===== */
 .hero-slider {
+    margin-top:84px;
     width: 100vw;
     height: 100vh;
     overflow: hidden;      /* 👈 CLAVE */
@@ -211,17 +233,7 @@ function cerrarLibro() {
 
 </script>
 
-<script>
-/* ===== HERO FADE LOGIC ===== */
-const slides = document.querySelectorAll(".hero-slider .slide");
-let current = 0;
 
-setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-}, 6000); // cambia cada 6 segundos
-</script>
 
 
 </head>
@@ -231,7 +243,7 @@ setInterval(() => {
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
     <div class="nav-left">
-        <img src="logo.jpeg" class="nav-logo-img">
+        <img src="media/logo.jpeg" class="nav-logo-img">
         <span class="author-name">Rogelio Solorzano</span>
     </div>
 
@@ -252,9 +264,11 @@ setInterval(() => {
 <!-- ================= HERO ================= -->
 <section class="hero-slider" id="inicio">
     <div class="slider-track">
-        <div class="slide" style="background-image:url('arte_01_portada.jpeg')"></div>
-        <div class="slide" style="background-image:url('arte_02_portada.jpeg')"></div>
-        <div class="slide" style="background-image:url('arte_03_portada.jpeg')"></div>
+<div class="slide" style="background-image:url('media/arte_01_portada.jpeg')"></div>
+
+<div class="slide" style="background-image:url('media/arte_02_portada.jpeg')"></div>
+
+<div class="slide" style="background-image:url('media/arte_03_portada.jpeg')"></div>
     </div>
 </section>
 
@@ -271,7 +285,10 @@ setInterval(() => {
 
     <div class="box">
         <h2>Introducción</h2>
-        <video src="video_0.mp4" controls style="width:100%; border-radius:12px;"></video>
+        <video controls style="width:100%; border-radius:12px;">
+    <source src="media/video_0.mp4" type="video/mp4">
+    Tu navegador no soporta el video.
+</video>
     </div>
 
     <a href="https://www.amazon.com.mx/Sofia-y-Los-Tres-Tesoros-ebook/dp/B0FGYG5QPR/"
@@ -297,9 +314,11 @@ setInterval(() => {
     <h2 class="arte-title">Arte</h2>
 
     <div class="arte-grid">
-        <img src="arte/arte_01_portada.jpeg">
-        <img src="arte/arte_02_portada.jpeg">
-        <img src="arte/arte_03_portada.jpeg">
+<img src="media/arte_01_portada.jpeg">
+
+<img src="media/arte_02_portada.jpeg">
+
+<img src="media/arte_03_portada.jpeg">
     </div>
 </section>
 
@@ -307,9 +326,29 @@ setInterval(() => {
 <div id="modalLibro" class="modal">
     <div class="modal-content">
         <button class="btn" onclick="cerrarLibro()">Cerrar</button><br><br>
-        <img src="libro/pagina1.jpg" style="width:100%; border-radius:12px;">
+        <img src="media/portada_1.jpg" style="width:100%; border-radius:12px;">
     </div>
 </div>
+
+
+<footer style="background:#170022;padding:40px;text-align:center;border-top:1px solid #333;">
+<h3>Sofía y los Tres Tesoros</h3>
+<p>© 2026 Rogelio Solórzano</p>
+<p>
+<a href="https://www.amazon.com.mx/Sofia-y-Los-Tres-Tesoros-ebook/dp/B0FGYG5QPR/" style="color:#fff;">Amazon</a> |
+<a href="https://youtube.com/@rogeliosolorzano-m9u" style="color:#fff;">YouTube</a>
+</p>
+</footer>
+
+<button id="topBtn" style="display:none;position:fixed;right:25px;bottom:25px;width:55px;height:55px;border:none;border-radius:50%;background:#6a0dad;color:#fff;font-size:24px;cursor:pointer;z-index:99999;">↑</button>
+
+<script>
+const topBtn=document.getElementById("topBtn");
+window.addEventListener("scroll",()=>{
+    topBtn.style.display=window.scrollY>300?"block":"none";
+});
+topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+</script>
 
 </body>
 </html>
