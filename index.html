@@ -315,13 +315,15 @@ function cerrarLibro() {
         <span class="author-name">Rogelio Solorzano</span>
     </div>
 
-    <ul class="nav-menu">
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#libro">Libro</a></li>
-<li><a href="#arte">Arte</a></li>
-<li><a href="#bio">Biografía</a></li>
-<li><a href="#" onclick="abrirContacto(); return false;">Contacto</a></li>
-    </ul>
+    
+<ul class="nav-menu">
+    <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="#libro" data-es="Libro" data-en="Book">Libro</a></li>
+    <li><a href="#arte" data-es="Arte" data-en="Artwork">Arte</a></li>
+    <li><a href="#bio" data-es="Biografía" data-en="Biography">Biografía</a></li>
+    <li><a href="#" onclick="abrirContacto(); return false;"
+        data-es="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
 
     <div class="lang-switch">
     <button class="lang active" onclick="cambiarIdioma('es')">ES</button>
@@ -346,7 +348,8 @@ function cerrarLibro() {
 <div class="container" id="libro">
 
     <div class="box">
-        <h2>Descripción</h2>
+       
+<h2 data-es="Descripción" data-en="Description">Descripción</h2>
         <p>
             Sofía y los Tres Tesoros es un viaje épico que narra la transformación de Sofía. Es una joven que ama profundamente a su familia y a su país, pero entre las sombras se oculta una poderosa familia que quiere destruir todo lo que ella ama.
 
@@ -355,7 +358,8 @@ Para salvar a su familia y al mundo entero, Sofía tendrá que emprender una ave
     </div>
 
     <div class="box">
-        <h2>Introducción</h2>
+        
+<h2 data-es="Introducción" data-en="Introduction">Introducción</h2>
         <video controls style="width:100%; border-radius:12px;">
     <source src="media/video_0.mp4" type="video/mp4">
     Tu navegador no soporta el video.
@@ -363,26 +367,34 @@ Para salvar a su familia y al mundo entero, Sofía tendrá que emprender una ave
     </div>
 
     <a href="https://www.amazon.com.mx/dp/B0DZXYC9QQ/"
-       target="_blank" class="btn">
+       target="_blank" class="btn"
+   data-es="⬇ Comprar / Descargar"
+   data-en="⬇ Buy / Download">
        ⬇ Comprar / Descargar
     </a>
 
     <br><br>
 
-    <button class="btn" onclick="abrirLibro()">📖 Ver Libro</button>
+    
+<button class="btn" onclick="abrirLibro()"
+    data-es="📖 Ver Libro" data-en="📖 View Book">
+    📖 Ver Libro
+</button>
 
     <br><br>
 
 <a href="https://youtube.com/@rogeliosolorzano-m9u"
-   target="_blank"
-   class="btn btn-youtube">
+ target="_blank" class="btn btn-youtube"
+   data-es="▶ Mi Canal de YouTube"
+   data-en="▶ My YouTube Channel">
    ▶ Mi Canal de YouTube
 </a>
 </div>
 
 <!-- ================= ARTE ================= -->
 <section class="arte-section" id="arte">
-    <h2 class="arte-title">Arte</h2>
+    
+<h2 class="arte-title" data-es="Arte" data-en="Artwork">Arte</h2>
 
     <div class="arte-grid">
 <img src="media/arte_01_portada.jpeg">
