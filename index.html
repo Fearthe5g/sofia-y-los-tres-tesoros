@@ -14,6 +14,95 @@
     box-sizing: border-box;
 }
 
+/*contacto /*
+
+<!-- CONTACTO -->
+<div id="contactModal" class="contact-modal">
+  <div class="contact-box">
+    <button class="contact-close"
+      onclick="cerrarContacto()">×</button>
+
+    <h2>Contactar a Rogelio</h2>
+    <p>Escríbenos tu mensaje.</p>
+
+    <form action="https://formspree.io/f/xrpeqdbk"
+      method="POST">
+
+      <input type="text" name="nombre"
+        placeholder="Tu nombre" required>
+
+      <input type="email" name="email"
+        placeholder="Tu correo electrónico" required>
+
+      <textarea name="mensaje" rows="5"
+        placeholder="Escribe tu mensaje..."
+        required></textarea>
+
+      <button type="submit" class="btn">
+        Enviar mensaje
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+.contact-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,.85);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.contact-box {
+  background: #300047;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+.contact-box input,
+.contact-box textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 7px;
+  border: none;
+  font: inherit;
+}
+.contact-box textarea { resize: vertical; }
+.contact-close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+function abrirContacto() {
+  document.getElementById('contactModal').style.display = 'flex';
+}
+function cerrarContacto() {
+  document.getElementById('contactModal').style.display = 'none';
+}
+document.getElementById('contactModal').addEventListener('click', function(e) {
+  if (e.target === this) cerrarContacto();
+});
+</script>
+    
+
+    
 html, body {
     scroll-behavior: smooth;
     margin: 0;
@@ -252,7 +341,7 @@ function cerrarLibro() {
 <li><a href="#libro">Libro</a></li>
 <li><a href="#arte">Arte</a></li>
 <li><a href="#bio">Biografía</a></li>
-<li><a href="#contacto">Contacto</a></li>
+<li><a href="#" onclick="abrirContacto(); return false;">Contacto</a></li>
     </ul>
 
     <div class="lang-switch">
