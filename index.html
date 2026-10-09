@@ -268,6 +268,23 @@ video {
     max-width: 900px;
     border-radius: 14px;
 }
+
+
+/* BOTONES DE IDIOMA ES / EN */
+.lang-switch button {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.lang-switch button.active {
+    color: #d59cff;
+    font-weight: bold;
+}
+    
 </style>
 
 <script>
@@ -307,8 +324,10 @@ function cerrarLibro() {
     </ul>
 
     <div class="lang-switch">
-        <span class="lang active">ES</span> / <span class="lang">EN</span>
-    </div>
+    <button class="lang active" onclick="cambiarIdioma('es')">ES</button>
+    /
+    <button class="lang" onclick="cambiarIdioma('en')">EN</button>
+</div>
 </nav>
 
 
@@ -443,6 +462,25 @@ document.getElementById("contactModal").addEventListener("click", function(e) {
     
 </script>
 
+<script>
+function cambiarIdioma(idioma) {
+    document.documentElement.lang = idioma;
+
+    document.querySelectorAll('[data-es][data-en]').forEach(elemento => {
+        elemento.textContent = elemento.getAttribute(
+            idioma === 'en' ? 'data-en' : 'data-es'
+        );
+    });
+
+    document.querySelectorAll('.lang-switch .lang').forEach(boton => {
+        boton.classList.toggle(
+            'active',
+            boton.textContent.trim().toLowerCase() === idioma
+        );
+    });
+}
+</script>
+    
 </body>
 </html>
 
