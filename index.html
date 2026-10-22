@@ -15,6 +15,44 @@
 }
 
 /* ================= CONTACTO ================= */
+
+/* VENTANA PEQUEÑA DE BIOGRAFÍA */
+#modalBio {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.65);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#modalBio .modal-content {
+    width: 100%;
+    max-width: 480px;
+    margin: 0;
+    padding: 28px;
+    background: #300047;
+    color: white;
+    border: 1px solid #6a0dad;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    animation: bioAparecer .25s ease-out;
+}
+
+@keyframes bioAparecer {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+    
 .contact-modal {
     display: none;
     position: fixed;
@@ -450,7 +488,7 @@ Para salvar a su familia y al mundo entero, Sofía tendrá que emprender una ave
 
 <!-- MODAL BIOGRAFÍA -->
 <div id="modalBio" class="modal" onclick="cerrarBioFondo(event)">
-  <div class="modal-content" style="color:white; padding:30px;">
+  <div class="modal-content">
     <button class="btn" onclick="cerrarBio()">Cerrar / Close</button>
 
     <h2 data-es="Sobre el Autor" data-en="About the Author">
