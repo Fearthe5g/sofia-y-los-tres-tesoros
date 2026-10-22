@@ -316,6 +316,20 @@ function cerrarLibro() {
     document.getElementById("modalLibro").style.display = "none";
 }
 
+function abrirBio() {
+    document.getElementById("modalBio").style.display = "block";
+}
+
+function cerrarBio() {
+    document.getElementById("modalBio").style.display = "none";
+}
+
+function cerrarBioFondo(event) {
+    if (event.target.id === "modalBio") {
+        cerrarBio();
+    }
+}
+
 </script>
 
 
@@ -337,7 +351,10 @@ function cerrarLibro() {
     <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
     <li><a href="#libro" data-es="Libro" data-en="Book">Libro</a></li>
     <li><a href="#arte" data-es="Arte" data-en="Artwork">Arte</a></li>
-    <li><a href="#bio" data-es="Biografía" data-en="Biography">Biografía</a></li>
+    <li>
+  <a href="#" onclick="abrirBio(); return false;"
+     data-es="Biografía" data-en="Biography">Biografía</a>
+</li>
     <li><a href="#" onclick="abrirContacto(); return false;"
         data-es="Contacto" data-en="Contact">Contacto</a></li>
 </ul>
@@ -429,6 +446,27 @@ Para salvar a su familia y al mundo entero, Sofía tendrá que emprender una ave
         <img src="media/portada_1.jpg" style="width:100%; border-radius:12px;">
     </div>
 </div>
+
+
+<!-- MODAL BIOGRAFÍA -->
+<div id="modalBio" class="modal" onclick="cerrarBioFondo(event)">
+  <div class="modal-content" style="color:white; padding:30px;">
+    <button class="btn" onclick="cerrarBio()">Cerrar / Close</button>
+
+    <h2 data-es="Sobre el Autor" data-en="About the Author">
+      Sobre el Autor
+    </h2>
+
+    <p
+      data-es="R. Solórzano nació en Guadalajara, Jalisco, y es Licenciado en Artes Audiovisuales por parte del CAAV. Sofía y los Tres Tesoros es su primera novela."
+      data-en="R. Solórzano was born in Guadalajara, Jalisco, Mexico, and holds a degree in Audiovisual Arts from CAAV. Sofía and the Three Treasures is his first novel.">
+      R. Solórzano nació en Guadalajara, Jalisco, y es Licenciado en Artes Audiovisuales por parte del CAAV. Sofía y los Tres Tesoros es su primera novela.
+    </p>
+  </div>
+</div>
+
+
+
 <!-- ================= CONTACTO ================= -->
 <div id="contactModal" class="contact-modal">
     <div class="contact-box">
